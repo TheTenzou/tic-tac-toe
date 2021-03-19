@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TicTacToe.field;
 
 namespace TicTacToe
 {
@@ -20,6 +21,7 @@ namespace TicTacToe
             InitializeComponent();
             //resetGame();
             loadButtons();
+            GameField field = new GameField(size); 
         }
 
         private void loadButtons()
@@ -39,7 +41,7 @@ namespace TicTacToe
                     buttons[i, j].Height = buttonSize;
                     buttons[i, j].Width = buttonSize;
                     buttons[i, j].Location = new Point(10 + i *buttonSize, 40 + j * buttonSize);
-                    buttons[i, j].Text = "?";
+                    buttons[i, j].Text = $"{i} {j}";
                     buttons[i, j].Tag = "cell";
                     buttons[i, j].Font = new Font("Georgia", 16);
 
