@@ -11,7 +11,7 @@ namespace TicTacToe.Game.Field
     class GameField
     {
         public int size { get; }
-        Player[,] grid;
+        private Player[,] grid;
 
         public void makeMove(Move move)
         {
@@ -29,6 +29,12 @@ namespace TicTacToe.Game.Field
             grid = new Player[size, size];
         }
 
+        public GameField colne()
+        {
+            GameField newField = new GameField(size);
+            newField.grid = (Player[,])grid.Clone();
+            return newField;
+        }
 
         public Player whoWin()
         {
