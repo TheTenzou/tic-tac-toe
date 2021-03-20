@@ -8,14 +8,13 @@ namespace TicTacToe.Game
 {
     class Move
     {
-        public int X { get; set; }
-        public int Y { get; set; }
+        public Player player { get; }
+        public CellCoordinats coordinats { get; }
 
-
-        public Move(int x, int y)
+        public Move(Player player, CellCoordinats coordinats)
         {
-            this.X = x;
-            this.Y = y;
+            this.player = player;
+            this.coordinats = coordinats;
         }        
     }
 }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TicTacToe.Game;
 
-namespace TicTacToe.player
+namespace TicTacToe
 {
-    interface IPlayer
+    enum Player
     {
-        Move getMove();
+        NULL,
+        PLAYER,
+        BOT
     }
 }

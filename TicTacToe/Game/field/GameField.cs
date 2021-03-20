@@ -3,103 +3,104 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TicTacToe.Game;
+using TicTacToe;
 
-namespace TicTacToe.field
+namespace TicTacToe.Game.Field
 {
     class GameField
     {
         private int size;
-        Status[,] grid;
+        Player[,] grid;
 
-        public Status this[int index1, int index2]
+        public void makeMove(Move move)
         {
-            get { return grid[index1, index2]; }
-            set { grid[index1, index2] = value; }
+            grid[move.coordinats.X, move.coordinats.Y] = move.player;
         }
 
         public GameField(int size)
         {
             this.size = size;
-            grid = new Status[size, size];
+            grid = new Player[size, size];
         }
 
 
-        public Status whoWin()
+        public Player whoWin()
         {
-            Status result = Status.NULL;
+            Player result = Player.NULL;
             for (int i = 0; i < size; i++)
             {
                 result = checkRow(i);
-                if (result != Status.NULL)
+                if (result != Player.NULL)
                     return result;
 
                 result = checkColumn(i);
-                if (result != Status.NULL)
+                if (result != Player.NULL)
                     return result;
             }
 
             result = checkPrimaryDiagonal();
-            if (result != Status.NULL)
+            if (result != Player.NULL)
                 return result;
 
             result = checkSecondaryDiagonal();
-            if (result != Status.NULL)
+            if (result != Player.NULL)
                 return result;
 
-            return Status.NULL;
+            return Player.NULL;
         }
 
-        private Status checkRow(int row)
+        private Player checkRow(int row)
         {
-            Status result = grid[row, 0];
+            Player result = grid[row, 0];
 
             for (int i = 1; i < size; i++)
             {
                 if (grid[row, i] != result)
                 {
-                    return Status.NULL;
+                    return Player.NULL;
                 }
             }
             return result;
         }
 
-        private Status checkColumn(int column)
+        private Player checkColumn(int column)
         {
-            Status result = grid[0, column];
+            Player result = grid[0, column];
 
             for (int i = 1; i < size; i++)
             {
                 if (grid[i, column] != result)
                 {
-                    return Status.NULL;
+                    return Player.NULL;
                 }
             }
             return result;
         }
 
-        private Status checkPrimaryDiagonal()
+        private Player checkPrimaryDiagonal()
         {
-            Status result = grid[0, 0];
+            Player result = grid[0, 0];
 
             for (int i = 1; i < size; i++)
             {
                 if (grid[i, i] != result)
                 {
-                    return Status.NULL;
+                    return Player.NULL;
                 }
             }
             return result;
         }
 
-        private Status checkSecondaryDiagonal()
+        private Player checkSecondaryDiagonal()
         {
-            Status result = grid[0, size-1];
+            Player result = grid[0, size-1];
 
             for (int i = 1; i < size; i++)
             {
                 if (grid[i, size-i-1] != result)
                 {
-                    return Status.NULL;
+                    return Player.NULL;
                 }
             }
             return result;

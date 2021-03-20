@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TicTacToe.field;
+using TicTacToe.Game;
+using TicTacToe.Game.Field;
 
 namespace TicTacToe
 {
@@ -44,9 +45,8 @@ namespace TicTacToe
                     buttons[i, j].Height = buttonSize;
                     buttons[i, j].Width = buttonSize;
                     buttons[i, j].Location = new Point(10 + i *buttonSize, 40 + j * buttonSize);
-                    //buttons[i, j].Text = $"{i} {j}";
                     buttons[i, j].Text = "?";
-                    buttons[i, j].Tag = new List<int> { i, j };
+                    buttons[i, j].Tag = new CellCoordinats(i, j);
                     buttons[i, j].Font = new Font("Georgia", 16);
 
                    buttons[i, j].Click += new EventHandler(player_click);
@@ -79,16 +79,16 @@ namespace TicTacToe
             button.BackColor = Color.LawnGreen;
             button.Text = "X";
 
-            List<int> coordiants = (List<int>)button.Tag;
+            CellCoordinats coordiants = (CellCoordinats)button.Tag;
 
-            field[coordiants[0], coordiants[1]] = Status.PLAYER;
+            field.makeMove(new Move(Player.PLAYER, coordiants));
 
-            Status winer = field.whoWin();
-            if (winer == Status.PLAYER)
+            Player winer = field.whoWin();
+            if (winer == Player.PLAYER)
             {
                 MessageBox.Show("You won.");
             } 
-            else if (winer == Status.BOT)
+            else if (winer == Player.BOT)
             {
                 MessageBox.Show("Bot won.");
             }
