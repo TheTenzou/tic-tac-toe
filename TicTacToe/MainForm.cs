@@ -15,17 +15,20 @@ namespace TicTacToe
     {
         Button[,] buttons;
         int size = 3;
+        
+        GameField field; 
 
         public MainForm()
         {
             InitializeComponent();
             //resetGame();
             loadButtons();
-            GameField field = new GameField(size); 
         }
 
         private void loadButtons()
         {
+            field = new GameField(size);
+
             buttons = new Button[size, size];
 
             int maxSize = Math.Min(this.ClientRectangle.Width - 20, this.ClientRectangle.Height - 50);
@@ -41,8 +44,9 @@ namespace TicTacToe
                     buttons[i, j].Height = buttonSize;
                     buttons[i, j].Width = buttonSize;
                     buttons[i, j].Location = new Point(10 + i *buttonSize, 40 + j * buttonSize);
-                    buttons[i, j].Text = $"{i} {j}";
-                    buttons[i, j].Tag = "cell";
+                    //buttons[i, j].Text = $"{i} {j}";
+                    buttons[i, j].Text = "?";
+                    buttons[i, j].Tag = new List<int> { i, j };
                     buttons[i, j].Font = new Font("Georgia", 16);
 
                    buttons[i, j].Click += new EventHandler(player_click);
@@ -74,6 +78,20 @@ namespace TicTacToe
             Button button = (Button)sender;
             button.BackColor = Color.LawnGreen;
             button.Text = "X";
+
+            List<int> coordiants = (List<int>)button.Tag;
+
+            field[coordiants[0], coordiants[1]] = Status.PLAYER;
+
+            Status winer = field.whoWin();
+            if (winer == Status.PLAYER)
+            {
+                MessageBox.Show("You won.");
+            } 
+            else if (winer == Status.BOT)
+            {
+                MessageBox.Show("Bot won.");
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

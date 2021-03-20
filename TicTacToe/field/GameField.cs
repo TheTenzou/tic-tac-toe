@@ -97,7 +97,7 @@ namespace TicTacToe.field
 
             for (int i = 1; i < size; i++)
             {
-                if (grid[size - i, i] != result)
+                if (grid[i, size-i-1] != result)
                 {
                     return Status.NULL;
                 }

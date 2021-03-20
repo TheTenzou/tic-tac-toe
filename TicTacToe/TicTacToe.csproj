@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="bot\Bot.cs" />
+    <Compile Include="player\Bot.cs" />
     <Compile Include="field\GameField.cs" />
     <Compile Include="field\Status.cs" />
     <Compile Include="MainForm.cs">
