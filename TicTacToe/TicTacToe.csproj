@@ -51,7 +51,7 @@
     <Compile Include="Game\Players\Bot.cs" />
     <Compile Include="Game\Field\GameField.cs" />
     <Compile Include="Game\Player.cs" />
-    <Compile Include="Game\Players\Smart\MoveStategy.cs" />
+    <Compile Include="Game\Players\Smart\MoveStrategy.cs" />
     <Compile Include="Game\Players\Smart\SmartBot.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
