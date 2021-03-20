@@ -21,7 +21,8 @@ namespace TicTacToe.Game.Players.Smart
 
         public Move getMove()
         {
-            throw new NotImplementedException();
+            MoveStrategy moveStrategy = generateMove(field.colne(), new MoveStrategy());
+            return moveStrategy.getMoves().First<Move>();
         }
 
         private MoveStrategy generateMove(GameField tempField, MoveStrategy st)
@@ -29,6 +30,7 @@ namespace TicTacToe.Game.Players.Smart
             int size = tempField.size;
 
             MoveStrategy result = st;
+            GameField resField = tempField;
 
             if (tempField.whoWin() == Player.NULL)
             {
@@ -46,22 +48,26 @@ namespace TicTacToe.Game.Players.Smart
                             MoveStrategy newMoveStrategy = st.clone();
 
                             newTempField.makeMove(move);
-                            st.addMove(move);
+                            newMoveStrategy.addMove(move);
 
                             MoveStrategy newResult = generateMove(newTempField, newMoveStrategy);
 
-                            if (result != null && newResult.isBetter(result))
+                            if (result != null && newResult.isBetter(result)/* && newResult.whoWins == Player.BOT*/)
                             {
                                 result = newResult;
+                                resField = newTempField;
+                                Console.WriteLine("test");
                             }
-
                         }
                     }
                 }
+                                //Console.WriteLine($"res status: {result.whoWins} moves: {result.getMoves().Count}");
+                //result.whoWins = resField.whoWin();
                 return result;
             }
             else
             {
+                st.whoWins = tempField.whoWin();
                 return st;
             }
         }

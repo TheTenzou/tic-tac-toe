@@ -8,7 +8,7 @@ namespace TicTacToe.Game.Players.Smart
 {
     class MoveStrategy
     {
-        private List<Move> listOfMoves;
+        private List<Move> listOfMoves = new List<Move>();
         public Player whoWins { set; get; }
 
         public void addMove(Move move)
@@ -40,9 +40,13 @@ namespace TicTacToe.Game.Players.Smart
             {
                 return true;
             } 
-            else
+            else if (this.whoWins == moveSrategy.whoWins)
             {
                 return this.listOfMoves.Count < moveSrategy.listOfMoves.Count;
+            }
+            else
+            {
+                return false;
             }
         }
     }

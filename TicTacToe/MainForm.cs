@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using TicTacToe.Game;
 using TicTacToe.Game.Field;
 using TicTacToe.Game.Players;
+using TicTacToe.Game.Players.Smart;
+
 
 namespace TicTacToe
 {
@@ -30,7 +32,8 @@ namespace TicTacToe
         private void loadButtons()
         {
             field = new GameField(size);
-            player = new Bot(Player.BOT, field);
+            //player = new Bot(Player.BOT, field);
+            player = new SmartBot(Player.BOT, field);
 
             buttons = new Button[size, size];
 
@@ -132,6 +135,7 @@ namespace TicTacToe
             Console.WriteLine(size);
             removeButtons();
             loadButtons();
+
         }
     }
 }
