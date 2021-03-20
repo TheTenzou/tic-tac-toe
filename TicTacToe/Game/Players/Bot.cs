@@ -7,18 +7,33 @@ using TicTacToe.Game.Field;
 
 namespace TicTacToe.Game.Players
 {
-    class Bot
+    class Bot : IPlayer
     {
-        GameField gameField;
+        private int size;
+        private Player player;
+        private GameField field;
 
-        public Bot(GameField gameField)
+        private Random rand = new Random();
+
+        public Bot(Player player, GameField field, int size)
         {
-            this.gameField = gameField;
+            this.size = size;
+            this.player = player;
+            this.field = field;
         }
 
-        public void makeMove()
+        public Move getMove()
         {
+            int x = rand.Next() % size;
+            int y = rand.Next() % size;
+            while(field.getStatus(x,y) != Player.NULL && field.whoWin() == Player.NULL)
+            {
+                x = rand.Next() % size;
+                y = rand.Next() % size;
+            }
 
+            return new Move(player, new CellCoordinats(x, y));
         }
+
     }
 }

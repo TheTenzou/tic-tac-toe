@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TicTacToe.Game;
 using TicTacToe.Game.Field;
+using TicTacToe.Game.Players;
 
 namespace TicTacToe
 {
@@ -17,7 +18,8 @@ namespace TicTacToe
         Button[,] buttons;
         int size = 3;
         
-        GameField field; 
+        GameField field;
+        IPlayer player; 
 
         public MainForm()
         {
@@ -29,6 +31,7 @@ namespace TicTacToe
         private void loadButtons()
         {
             field = new GameField(size);
+            player = new Bot(Player.BOT, field, size);
 
             buttons = new Button[size, size];
 
@@ -87,16 +90,51 @@ namespace TicTacToe
             if (winer == Player.PLAYER)
             {
                 MessageBox.Show("You won.");
-            } 
+            }
             else if (winer == Player.BOT)
             {
                 MessageBox.Show("Bot won.");
+            }
+            else
+            {
+
+                Move botMove = player.getMove();
+                field.makeMove(botMove);
+
+                foreach (Control control in this.Controls)
+                {
+                    if (control.Tag != null)
+                    {
+
+                        CellCoordinats cell = (CellCoordinats)control.Tag;
+                        if (cell.Equals(botMove.coordinats))
+                        {
+                            Button botButton = (Button)control;
+                            botButton.BackColor = Color.Magenta;
+                            botButton.Text = "o";
+                        }
+                    }
+                }
+
+                winer = field.whoWin();
+                if (winer == Player.PLAYER)
+                {
+                    MessageBox.Show("You won.");
+                }
+                else if (winer == Player.BOT)
+                {
+                    MessageBox.Show("Bot won.");
+                }
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Int32.TryParse(textBox1.Text, out size);
+            Int32.TryParse(textBox1.Text, out int size);
+            if (size > 0)
+            {
+                this.size = size;
+            }
             Console.WriteLine(size);
             removeButtons();
             loadButtons();

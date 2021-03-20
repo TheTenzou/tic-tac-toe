@@ -16,5 +16,10 @@ namespace TicTacToe.Game
             this.X = x;
             this.Y = y;
         }
+
+        public bool Equals(CellCoordinats cell)
+        {
+            return (cell.X == this.X) && (cell.Y == this.Y);
+        }
     }
 }
