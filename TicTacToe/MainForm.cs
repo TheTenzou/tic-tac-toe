@@ -24,14 +24,13 @@ namespace TicTacToe
         public MainForm()
         {
             InitializeComponent();
-            //resetGame();
             loadButtons();
         }
 
         private void loadButtons()
         {
             field = new GameField(size);
-            player = new Bot(Player.BOT, field, size);
+            player = new Bot(Player.BOT, field);
 
             buttons = new Button[size, size];
 
@@ -52,7 +51,7 @@ namespace TicTacToe
                     buttons[i, j].Tag = new CellCoordinats(i, j);
                     buttons[i, j].Font = new Font("Georgia", 16);
 
-                   buttons[i, j].Click += new EventHandler(player_click);
+                    buttons[i, j].Click += new EventHandler(player_click);
 
                     Controls.Add(buttons[i, j]);
                 }
@@ -68,11 +67,6 @@ namespace TicTacToe
                 else
                     i++;
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void player_click(object sender, EventArgs e)

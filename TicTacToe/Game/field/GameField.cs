@@ -10,7 +10,7 @@ namespace TicTacToe.Game.Field
 {
     class GameField
     {
-        private int size;
+        public int size { get; }
         Player[,] grid;
 
         public void makeMove(Move move)

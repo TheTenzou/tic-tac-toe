@@ -15,9 +15,9 @@ namespace TicTacToe.Game.Players
 
         private Random rand = new Random();
 
-        public Bot(Player player, GameField field, int size)
+        public Bot(Player player, GameField field)
         {
-            this.size = size;
+            this.size = field.size;
             this.player = player;
             this.field = field;
         }
