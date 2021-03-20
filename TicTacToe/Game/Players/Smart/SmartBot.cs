@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TicTacToe.Game.Field;
 
-namespace TicTacToe.Game.Players
+namespace TicTacToe.Game.Players.Smart
 {
     class SmartBot : IPlayer
     {
@@ -21,6 +21,11 @@ namespace TicTacToe.Game.Players
         public Move getMove()
         {
             throw new NotImplementedException();
+        }
+
+        private generateMove(GameField tempField)
+        {
+            
         }
     }
 }
