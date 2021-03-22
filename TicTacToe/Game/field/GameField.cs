@@ -36,6 +36,22 @@ namespace TicTacToe.Game.Field
             return newField;
         }
 
+        public bool isMovesLeft()
+        {
+            for (int i = 0; i < size; i++)
+            {
+                for (int j = 0; j < size; j++)
+                {
+                    if (grid[i,j] == Player.NULL)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         public Player whoWin()
         {
             Player result = Player.NULL;

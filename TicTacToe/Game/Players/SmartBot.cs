@@ -56,7 +56,7 @@ namespace TicTacToe.Game.Players
             {
                 return score;
             }
-            else if (field.whoWin() == Player.NULL)
+            else if (!field.isMovesLeft())
             {
                 return 0;
             }
