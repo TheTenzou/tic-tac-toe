@@ -32,8 +32,14 @@ namespace TicTacToe
         private void loadButtons()
         {
             field = new GameField(size);
-            //player = new Bot(Player.BOT, field);
-            player = new SmartBot(Player.BOT, field);
+            if (size <= 3)
+            {
+                player = new SmartBot(Player.BOT, field);
+            }
+            else
+            {
+                player = new Bot(Player.BOT, field);
+            }
 
             buttons = new Button[size, size];
 

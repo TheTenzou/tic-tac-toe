@@ -17,10 +17,14 @@ namespace TicTacToe.Game.Players
         private const int DRAW_FIELD_SCORE = 0;
         private const int LOSING_FIELD_SCORE = -10;
 
+        private int count = 0;
+        private int perv = 0;
+
         public SmartBot(Player player, GameField field)
         {
             this.player = player;
             this.field = field;
+            Console.WriteLine($"field size {this.field.size}");
         }
 
         public Move getMove()
@@ -46,6 +50,12 @@ namespace TicTacToe.Game.Players
 
         private int minMax(GameField field, int depth, bool isMax)
         {
+            count++;
+            if (count > perv + 99999)
+            {
+                Console.WriteLine(count);
+                perv = count;
+            }
             int score = evaluateGameField(field);
 
             if (score == WINING_FIELD_SCORE)
