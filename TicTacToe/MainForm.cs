@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using TicTacToe.Game;
 using TicTacToe.Game.Field;
 using TicTacToe.Game.Players;
-using TicTacToe.Game.Players.Smart;
+using TicTacToe.Game.Players;
 
 
 namespace TicTacToe
