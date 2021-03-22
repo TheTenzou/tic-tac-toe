@@ -91,6 +91,10 @@ namespace TicTacToe
             else if (winer == Player.BOT)
             {
                 MessageBox.Show("Bot won.");
+            } 
+            else if (!field.isMovesLeft())
+            {
+                MessageBox.Show("Draw.");
             }
             else
             {
@@ -121,6 +125,10 @@ namespace TicTacToe
                 else if (winer == Player.BOT)
                 {
                     MessageBox.Show("Bot won.");
+                }
+                else if (!field.isMovesLeft())
+                {
+                    MessageBox.Show("Draw.");
                 }
             }
         }

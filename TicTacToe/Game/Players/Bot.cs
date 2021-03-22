@@ -26,7 +26,7 @@ namespace TicTacToe.Game.Players
         {
             int x = rand.Next() % size;
             int y = rand.Next() % size;
-            while(field.getStatus(x,y) != Player.NULL && field.whoWin() == Player.NULL)
+            while(field.getCellStatus(x,y) != Player.NULL && field.whoWin() == Player.NULL)
             {
                 x = rand.Next() % size;
                 y = rand.Next() % size;

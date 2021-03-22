@@ -18,7 +18,7 @@ namespace TicTacToe.Game.Field
             grid[move.coordinats.X, move.coordinats.Y] = move.player;
         }
 
-        public Player getStatus(int i, int j)
+        public Player getCellStatus(int i, int j)
         {
             return grid[i, j];
         }

@@ -69,7 +69,7 @@ namespace TicTacToe.Game.Players
                 {
                     for (int j = 0; j < field.size; j++)
                     {
-                        if (field.getStatus(i,j) == Player.NULL)
+                        if (field.getCellStatus(i,j) == Player.NULL)
                         {
                             GameField fieldCopy = field.colne();
 
@@ -90,7 +90,7 @@ namespace TicTacToe.Game.Players
                 {
                     for (int j = 0; j < field.size; j++)
                     {
-                        if (field.getStatus(i,j) == Player.NULL)
+                        if (field.getCellStatus(i,j) == Player.NULL)
                         {
                             GameField fieldCopy = field.colne();
 
@@ -113,7 +113,7 @@ namespace TicTacToe.Game.Players
             {
                 for (int j = 0; j < field.size; j++)
                 {
-                    if (field.getStatus(i,j) == Player.NULL)
+                    if (field.getCellStatus(i,j) == Player.NULL)
                     {
                         GameField fieldCopy = field.colne();
 
