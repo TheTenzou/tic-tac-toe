@@ -1,7 +1,5 @@
 # Tic tac toe
 
-Tic tac toe game
+Крестики нолики
 
-To do:
- * fix naming
- * refactor using events
+Похорошему пофиксить неминг переменных и методов
